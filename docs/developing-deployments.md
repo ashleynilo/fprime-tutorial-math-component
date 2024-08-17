@@ -16,7 +16,7 @@ Use the following command to create the deployment:
 fprime-util new --deployment
 ```
 
-When creating the deployment you will be asked two questions, answer them as follows: 
+This command will ask for some input. Respond with the following answers:
 
 ```
   Deployment name (MyDeployment): MathDeployment
