@@ -34,7 +34,7 @@ This tutorial assumes the following:
 
 2. Basic knowledge of C++.
 
-3. We advise new F' users to try the [HelloWorld Tutorial](https://github.jpl.nasa.gov/pages/ashleysa/fprime-website-mkdocs-dev/latest/tutorials-hello-world/docs/hello-world/)
+3. We advise new F' users to try the [HelloWorld Tutorial](https://fprime.jpl.nasa.gov/latest/tutorials-hello-world/docs/hello-world/)
 
 ## Table of Contents
 
@@ -62,15 +62,15 @@ This tutorial assumes the following:
 ### Bootstrapping F´
 
 !!! note
-    if you have followed the [HelloWorld tutorial](https://github.jpl.nasa.gov/pages/ashleysa/fprime-website-mkdocs-dev/latest/tutorials-hello-world/docs/hello-world/) previously, this should feel very familiar...
+    if you have followed the [HelloWorld tutorial](https://fprime.jpl.nasa.gov/latest/tutorials-hello-world/docs/hello-world/) previously, this should feel very familiar...
 
 An F´ project ties to a specific version of tools to work with F´. In order to create
 this project and install the correct version of tools, you should perform a bootstrap of F´.
 
-To do this you should follow the following steps from the [F´ installation guide](https://github.jpl.nasa.gov/pages/ashleysa/fprime-website-mkdocs-dev/latest/getting-started/installing-fprime):
+To do this you should follow the following steps from the [F´ installation guide](https://fprime.jpl.nasa.gov/latest/getting-started/installing-fprime):
 
-1. Ensure you meet the [F´ System Requirements](https://github.jpl.nasa.gov/pages/ashleysa/fprime-website-mkdocs-dev/latest/getting-started/installing-fprime#system-requirements)
-2. [Bootstrap your F´ project](https://github.jpl.nasa.gov/pages/ashleysa/fprime-website-mkdocs-dev/latest/getting-started/installing-fprime#creating-a-new-f-project) with the name `MathProject`
+1. Ensure you meet the [F´ System Requirements](https://fprime.jpl.nasa.gov/latest/getting-started/installing-fprime#system-requirements)
+2. [Bootstrap your F´ project](https://fprime.jpl.nasa.gov/latest/getting-started/installing-fprime#creating-a-new-f-project) with the name `MathProject`
 
 Bootstrapping your F´ project created a folder called `MathProject` (or any name you chose) containing the standard F´ project structure as well as the virtual environment up containing the tools to work with F´.
 
@@ -1248,7 +1248,7 @@ fprime-gds
 ### Send Some Commands
 Under _Commanding_ there is a drop-down menu called "mnemonic". Click Mnemonic and find mathSender.DO_MATH. When you select DO_MATH, three new option should appear. In put 7 into val1, put 6 into val2, and put MUL into op. Press send command. Navigate to _Events_ (top left) and find the results of your command. You should see The Ultimate Answer to Life, the Universe, and Everything: 42.
 
-For a more detailed guide to the F´ GDS, see [GDS Introduction](https://github.jpl.nasa.gov/pages/ashleysa/fprime-website-mkdocs-dev/latest/documentation/user-manual/overview/gds-introduction/).
+For a more detailed guide to the F´ GDS, see [GDS Introduction](https://fprime.jpl.nasa.gov/latest/documentation/user-manual/overview/gds-introduction/).
 
 
 ### Summary
