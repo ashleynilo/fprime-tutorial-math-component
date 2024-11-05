@@ -1,3 +1,7 @@
+---
+permalink: /
+---
+
 # MathComponent Tutorial 
 Reference: [Math Component Tutorial Github Repository](https://github.com/fprime-community/fprime-tutorial-math-component)
 
@@ -36,33 +40,13 @@ This tutorial assumes the following:
 
 3. We advise new F' users to try the [HelloWorld Tutorial](https://fprime.jpl.nasa.gov/latest/tutorials-hello-world/docs/hello-world/)
 
-## Table of Contents
-
-1. [Project Setup](#project-setup)
-2. [Defining Types](#defining-types)
-3. [Constructing Ports](#constructing-ports)
-4. [Creating Components Part 1: Creating the MathSender](#creating-components-part-1-creating-the-mathsender)
-5. [Creating Components Part 2: Implementing MathSender Behavior](#creating-components-part-2-implementing-mathsender-behavior)
-6. [Creating Components Part 3: Starting the MathReceiver](#creating-components-part-3-starting-the-mathreceiver)
-7. [Creating Components Part 4: Implementing MathReceiver Behavior](#creating-components-part-4-implementing-mathreceiver-behavior)
-8. [Developing Deployments](#developing-deployments)
-9. [Writing Unit Tests Part 1: Creating the Implementation Stub](#writing-unit-tests-part-1-creating-the-implementation-stub)
-10. [Writing Unit Tests Part 2: Completing the Stub & Running the Test](#writing-unit-tests-part-2-completing-the-stub-running-the-test)
-11. [Writing Unit Tests Part 3: Testing the Results](#writing-unit-tests-part-3-testing-the-results)
-12. [Writing Unit Tests Part 4: Random testing](#writing-unit-tests-part-4-random-testing)
-13. [Writing Unit Tests Part 5: Creating the Implementation Stub](#writing-unit-tests-part-5-creating-the-implementation-stub)
-14. [Writing Unit Tests Part 6: Writing Helper Functions](#writing-unit-tests-part-6-writing-helper-functions)
-15. [Writing Unit Tests Part 7: Writing the Tests](#writing-unit-tests-part-7-writing-the-tests)
-16. [Adding Telemetry](#adding-telemetry)
-17. [Error Handling 1: Critical Thinking](#error-handling-1-critical-thinking)
-18. [Error Handling 2: One Solution](#error-handling-2-one-solution)
 
 ---
 ## Project Setup
 ### Bootstrapping F´
 
-!!! note
-    if you have followed the [HelloWorld tutorial](https://fprime.jpl.nasa.gov/latest/tutorials-hello-world/docs/hello-world/) previously, this should feel very familiar...
+> [!NOTE]
+> if you have followed the [HelloWorld tutorial](https://fprime.jpl.nasa.gov/latest/tutorials-hello-world/docs/hello-world/) previously, this should feel very familiar...
 
 An F´ project ties to a specific version of tools to work with F´. In order to create
 this project and install the correct version of tools, you should perform a bootstrap of F´.
@@ -86,8 +70,8 @@ fprime-util generate
 fprime-util build -j4
 ```
 
-!!! note
-    `fprime-util generate` sets up the build environment for a project/deployment. It only needs to be done once. At the end of this tutorial, a new deployment will be created and `fprime-util generate` will also be used then.
+> [!NOTE]
+> `fprime-util generate` sets up the build environment for a project/deployment. It only needs to be done once. At the end of this tutorial, a new deployment will be created and `fprime-util generate` will also be used then.
 
 ### Summary
 
@@ -152,8 +136,8 @@ module MathModule {
   }
 }
 ```
-!!! note
-    Important: think of modules similar to a cpp namespace. Whenever you want to make use of the enumeration, `MathOp`, you will need to use the MathModule module. 
+> [!NOTE]
+> Important: think of modules similar to a cpp namespace. Whenever you want to make use of the enumeration, `MathOp`, you will need to use the MathModule module. 
 
 Above you have created an enumeration of the four math types that are used in this tutorial.
 
@@ -171,8 +155,8 @@ To create CMakeLists.txt use:
 touch CMakeLists.txt 
 ```
 
-!!! note
-    capitalization and spelling is important when creating files!
+> [!NOTE]
+> capitalization and spelling is important when creating files!
 
 Use a text editor to replace whatever is in CMakeLists.txt, most likely nothing, with the following.
 
@@ -200,16 +184,16 @@ The `Types` directory should now build without any issues. Test the build with t
 fprime-util build 
 ```
 
-!!! note
-    if you have not generated a build cache already, you may need to run `fprime-util generate` before you can build.
+> [!NOTE]
+> if you have not generated a build cache already, you may need to run `fprime-util generate` before you can build.
 
 The output should indicate that the model built without any errors. If not, try to identify and correct what is wrong, either by deciphering the error output, or by going over the steps again. If you get stuck, you can look at the [reference implementation](https://github.com/fprime-community/fprime-tutorial-math-component).
 
-!!! note
-    The advanced user may want to go inspect the generated code. Go to the directory `MathProject/build-fprime-automatic-native/MathTypes`. The directory `build-fprime-automatic-native` is where all the generated code lives for the "automatic native" build of the project. Within that directory is a directory tree that mirrors the project structure. In particular, `build-fprime-automatic-native/MathTypes` contains the generated code for `MathTypes`.
+> [!NOTE]
+> The advanced user may want to go inspect the generated code. Go to the directory `MathProject/build-fprime-automatic-native/MathTypes`. The directory `build-fprime-automatic-native` is where all the generated code lives for the "automatic native" build of the project. Within that directory is a directory tree that mirrors the project structure. In particular, `build-fprime-automatic-native/MathTypes` contains the generated code for `MathTypes`.
 
-!!! note
-    The files MathOpEnumAc.hpp and MathOpEnumAc.cpp are the auto-generated C++ files corresponding to the MathOp enum. You may wish to study the file MathOpEnumAc.hpp. This file gives the interface to the C++ class MathModule::MathOp. All enum types have a similar auto-generated class interface.
+> [!NOTE]
+> The files MathOpEnumAc.hpp and MathOpEnumAc.cpp are the auto-generated C++ files corresponding to the MathOp enum. You may wish to study the file MathOpEnumAc.hpp. This file gives the interface to the C++ class MathModule::MathOp. All enum types have a similar auto-generated class interface.
 
 ### Summary  
 At this point you have successfully created the `MathOp` type 
@@ -275,8 +259,8 @@ module MathModule {
   )
 }
 ```
-!!! note
-    Notice how we define ports in MathModule, which is where we defined MathOp as well. 
+> [!NOTE]
+> Notice how we define ports in MathModule, which is where we defined MathOp as well. 
 
 Here, you have created two ports. The first port, called `OpRequest`, carries two 32-bit floats (`val1` and `val2`) and a math operations `op`. The second port only carries one 32-bit float (result). The first port is intended to send an operation and operands to the `MathReceiver`.
 The second port is designed to send the results of the operation back to `MathSender`. 
@@ -321,7 +305,6 @@ Check in `MathProject/build-fprime-automatic-native/MathPorts` for port definiti
 files end in `*PortAc.hpp` and `*PortAc.cpp`.
 Note however, the auto-generated C++ port files are used by the autocoded component implementations; you won't ever program directly against their interfaces.
 
-### Conclusion
 At this point, you have successfully implemented all the ports used for this tutorial and added them to the build. 
 
 
@@ -521,8 +504,8 @@ There are two event reports, one for receiving a command and one for receiving a
 5. **Telemetry:** These are **channels** that define telemetry points that the this component can emit.
 There are four telemetry channels: three for the arguments to the last command received and one for the last result received.
 
-!!! note
-    For more information on defining components, see the [_FPP User's Guide_](https://nasa.github.io/fpp/fpp-users-guide.html#Defining-Components).
+> [!NOTE]
+> For more information on defining components, see the [_FPP User's Guide_](https://nasa.github.io/fpp/fpp-users-guide.html#Defining-Components).
 
 
 ### Generate the Implementation Files
@@ -1143,8 +1126,8 @@ instance mathSender
 instance mathReceiver 
 ```
 
-!!! note
-    This step highlights the importance of capitalization. The easiest way to differentiate between the component definition and instance is the capitalization.
+> [!NOTE]
+> This step highlights the importance of capitalization. The easiest way to differentiate between the component definition and instance is the capitalization.
 
 ### Explanation 
 
@@ -1199,8 +1182,8 @@ Go into `topology.fpp`, connect `mathReceiver.schedIn` to rate group one using t
 rateGroup1.RateGroupMemberOut[3] -> mathReceiver.schedIn
 ```
 
-!!! note
-    `[3]` is the next available index in rate group one.
+> [!NOTE]
+> `[3]` is the next available index in rate group one.
 
 ### Explanation
 This line adds the connection that drives the `schedIn` port of the `mathReceiver` component instance.
@@ -1242,8 +1225,8 @@ Run the MathComponent deployment through the GDS:
 # In: MathProject/MathDeployment
 fprime-gds 
 ```
-!!! bug
-    If you encounter an error on this step, try running `fprime-gds` in the `MathProject`. 
+> [!TIP]
+> If you encounter an error on this step, make sure you are running in the MathDeployment directory.
 
 ### Send Some Commands
 Under _Commanding_ there is a drop-down menu called "mnemonic". Click Mnemonic and find mathSender.DO_MATH. When you select DO_MATH, three new option should appear. In put 7 into val1, put 6 into val2, and put MUL into op. Press send command. Navigate to _Events_ (top left) and find the results of your command. You should see The Ultimate Answer to Life, the Universe, and Everything: 42.
@@ -1330,8 +1313,8 @@ set(UT_AUTO_HELPERS ON)
 register_fprime_ut()
 ```
 
-!!! note
-    most of this is from a few steps ago, you will only be adding two lines in this step. 
+> [!NOTE]
+> most of this is from a few steps ago, you will only be adding two lines in this step. 
 
 Build the unit test in MathSender:
 
@@ -1339,8 +1322,8 @@ Build the unit test in MathSender:
 # In: MathSender
 fprime-util build --ut 
 ```
-!!! warning
-    Don't forget to add ```--ut``` or else you are just going to build the component again. 
+> [!WARNING]
+> Don't forget to add ```--ut``` or else you are just going to build the component again. 
 
 ### (Optional) Inspect the generated code
 The unit test build generates some code to support unit testing. The code is located at `MathSender/build-fprime-automatic-native-ut/Components/MathSender`.
@@ -1687,8 +1670,8 @@ Generate a stub implementation of the unit tests.
 # In: MathReceiver
 fprime-util impl --ut
 ```
-!!! note
-    These commands may take a while to run.
+> [!NOTE]
+> These commands may take a while to run.
 
 You have just generate three new files `MathReceiverTester.cpp MathReceiverTester.hpp MathReceiverTestMain.cpp`. Move these files to the test/ut directory in MathReceiver using:
 
@@ -1710,8 +1693,8 @@ set(UT_AUTO_HELPERS ON)
 register_fprime_ut()
 ```
 
-!!! note
-    most of this is from a few steps ago, you will only be adding two lines in this step. 
+> [!NOTE]
+> Most of this is from a few steps ago, you will only be adding two lines in this step. 
 
 Build the unit test in MathReceiver:
 
@@ -1719,8 +1702,8 @@ Build the unit test in MathReceiver:
 # In: MathReceiver
 fprime-util build --ut 
 ```
-!!! warning
-    Don't forget to add ```--ut``` or else you are just going to build the component again. 
+> [!WARNING]
+> Don't forget to add ```--ut``` or else you are just going to build the component again. 
 
 
 ### Preparing for Random Testing
@@ -1800,8 +1783,8 @@ F32MathReceiverTester ::
   return m * (1.0 - 2 * STest::Pick::inUnitInterval());
 }
 ```
-!!! warning
-    Remember to add a function signature in `MathReceiverTester.hpp`. 
+> [!WARNING]
+> Remember to add a function signature in `MathReceiverTester.hpp`. 
 
 This function picks a random `F32` value in the range
 _[ -10^6, 10^6 ]_.
@@ -1844,8 +1827,8 @@ void MathReceiverTester ::
     }
 }
 ```
-!!! note
-    Make sure that set factor is below where you defined `ThrottleSate` and remember to add a function signature in `MathReceiverTester.hpp`.
+> [!NOTE]
+> Make sure that set factor is below where you defined `ThrottleSate` and remember to add a function signature in `MathReceiverTester.hpp`.
 
 ### Explanation
 
@@ -1896,8 +1879,8 @@ F32 MathReceiverTester ::
     return result;
 }
 ```
-!!! warning
-    Don't forget to add a function signature in `MathReceiverTester.hpp`.
+> [!WARNING]
+> Don't forget to add a function signature in `MathReceiverTester.hpp`.
 
 This function carries out the math computation of the math component.
 By running this function and comparing, we can check the output of the component.
@@ -1961,8 +1944,8 @@ void MathReceiverTester ::
 
 }
 ```
-!!! warning
-    Don't forget to add a function signature in `MathReceiverTester.hpp`.
+> [!WARNING]
+> Don't forget to add a function signature in `MathReceiverTester.hpp`.
 
 This function is similar to the `doMath` helper function that we wrote for the `MathSender` component.
 Notice that the method for invoking a port is different.
@@ -1997,8 +1980,8 @@ void MathReceiverTester ::
     this->doMathOp(MathOp::ADD, factor);
 }
 ```
-!!! warning
-    Don't forget to add a function signature in `MathReceiverTester.hpp`.
+> [!WARNING]
+> Don't forget to add a function signature in `MathReceiverTester.hpp`.
 
 `testAdd()` calls the `setFactor` helper function to set the factor parameter. Then it calls the `doMathOp` function to do a math operation.
 
@@ -2165,8 +2148,8 @@ numMathOps++;
 // After: numMathOps++
 this->tlmWrite_NUMBER_OF_OPS(numMathOps); 
 ```
-!!! note
-    This function will get autocoded by FPP since we defined the telemetry channel.
+> [!NOTE]
+> This function will get autocoded by FPP since we defined the telemetry channel.
 
 6. Add the channel to the pre-existing MathReceiver packet in `MathDeploymentPackets.xml`:
 
@@ -2277,8 +2260,8 @@ switch (op.e) {
             break;
     }
 ```
-!!! info
-    Technically speaking, this solution will prevent the error, but it would be good to output some error message before throwing away the operands and returning the default `res`.
+> [!NOTE]
+> Technically speaking, this solution will prevent the error, but it would be good to output some error message before throwing away the operands and returning the default `res`.
 
 Create an event to notify that a divide by zero command  was received by the `MathReceiver`:
 
@@ -2290,8 +2273,8 @@ event DIVIDE_BY_ZERO   \
     id 3 \
     format "ERROR: Received zero as denominator. Opperands dropped."
 ```
-!!! note
-    Write your own error message between the quotes after `format`! 
+> [!NOTE]
+> Write your own error message between the quotes after `format`! 
 
 Add your even into the case where `MathOp::DIV` and `val2` is 0:
 
