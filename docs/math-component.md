@@ -29,7 +29,7 @@ This tutorial will cover the following concepts:
 4. Handling errors, creating events, and adding telemetry channels. 
 
 > [!TIP]
-> The source for this tutorial is located here: https://github.com/fprime-community/fprime-tutorial-math-component. If you are stuck at some point during the tutorial, you may refer to that reference as the "solution".
+> The source for this tutorial is located here: [https://github.com/fprime-community/fprime-tutorial-math-component](https://github.com/fprime-community/fprime-tutorial-math-component). If you are stuck at some point during the tutorial, you may refer to that reference as the "solution".
 
 
 ---
