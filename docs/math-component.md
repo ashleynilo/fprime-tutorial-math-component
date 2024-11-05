@@ -3,11 +3,8 @@ permalink: /
 ---
 
 # MathComponent Tutorial 
-Reference: [Math Component Tutorial Github Repository](https://github.com/fprime-community/fprime-tutorial-math-component)
 
-Welcome to the MathComponent tutorial!
-
-This tutorial shows how to develop, test, and deploy a simple topology
+Welcome to the MathComponent tutorial! This tutorial shows how to develop, test, and deploy a simple topology
 consisting of two components:
 
 1. `MathSender`: A component that receives commands and forwards work to
@@ -31,14 +28,8 @@ This tutorial will cover the following concepts:
 
 4. Handling errors, creating events, and adding telemetry channels. 
 
-## Prerequisites 
-This tutorial assumes the following:
-
-1. Basic knowledge of Unix: How to navigate in a shell and execute programs.
-
-2. Basic knowledge of C++.
-
-3. We advise new F' users to try the [HelloWorld Tutorial](https://fprime.jpl.nasa.gov/latest/tutorials-hello-world/docs/hello-world/)
+> [!TIP]
+> The source for this tutorial is located here: https://github.com/fprime-community/fprime-tutorial-math-component. If you are stuck at some point during the tutorial, you may refer to that reference as the "solution".
 
 
 ---
