@@ -46,7 +46,7 @@ This tutorial assumes the following:
 ### Bootstrapping F´
 
 > [!NOTE]
-> if you have followed the [HelloWorld tutorial](https://fprime.jpl.nasa.gov/latest/tutorials-hello-world/docs/hello-world/) previously, this should feel very familiar...
+> If you have followed the [HelloWorld tutorial](https://fprime.jpl.nasa.gov/latest/tutorials-hello-world/docs/hello-world/) previously, this should feel very familiar...
 
 An F´ project ties to a specific version of tools to work with F´. In order to create
 this project and install the correct version of tools, you should perform a bootstrap of F´.
@@ -136,8 +136,8 @@ module MathModule {
   }
 }
 ```
-> [!NOTE]
-> Important: think of modules similar to a cpp namespace. Whenever you want to make use of the enumeration, `MathOp`, you will need to use the MathModule module. 
+> [!IMPORTANT]
+> Think of modules similar to a cpp namespace. Whenever you want to make use of the enumeration, `MathOp`, you will need to use the MathModule module. 
 
 Above you have created an enumeration of the four math types that are used in this tutorial.
 
@@ -155,8 +155,8 @@ To create CMakeLists.txt use:
 touch CMakeLists.txt 
 ```
 
-> [!NOTE]
-> capitalization and spelling is important when creating files!
+> [!IMPORTANT]
+> Capitalization and spelling is important when creating files!
 
 Use a text editor to replace whatever is in CMakeLists.txt, most likely nothing, with the following.
 
@@ -185,12 +185,12 @@ fprime-util build
 ```
 
 > [!NOTE]
-> if you have not generated a build cache already, you may need to run `fprime-util generate` before you can build.
+> If you have not generated a build cache already, you may need to run `fprime-util generate` before you can build.
 
 The output should indicate that the model built without any errors. If not, try to identify and correct what is wrong, either by deciphering the error output, or by going over the steps again. If you get stuck, you can look at the [reference implementation](https://github.com/fprime-community/fprime-tutorial-math-component).
 
 > [!NOTE]
-> The advanced user may want to go inspect the generated code. Go to the directory `MathProject/build-fprime-automatic-native/MathTypes`. The directory `build-fprime-automatic-native` is where all the generated code lives for the "automatic native" build of the project. Within that directory is a directory tree that mirrors the project structure. In particular, `build-fprime-automatic-native/MathTypes` contains the generated code for `MathTypes`.
+> Advanced users may want to go inspect the generated code. Go to the directory `MathProject/build-fprime-automatic-native/MathTypes`. The directory `build-fprime-automatic-native` is where all the generated code lives for the "automatic native" build of the project. Within that directory is a directory tree that mirrors the project structure. In particular, `build-fprime-automatic-native/MathTypes` contains the generated code for `MathTypes`.
 
 > [!NOTE]
 > The files MathOpEnumAc.hpp and MathOpEnumAc.cpp are the auto-generated C++ files corresponding to the MathOp enum. You may wish to study the file MathOpEnumAc.hpp. This file gives the interface to the C++ class MathModule::MathOp. All enum types have a similar auto-generated class interface.
@@ -1314,7 +1314,7 @@ register_fprime_ut()
 ```
 
 > [!NOTE]
-> most of this is from a few steps ago, you will only be adding two lines in this step. 
+> Most of this is from a few steps ago, you will only be adding two lines in this step. 
 
 Build the unit test in MathSender:
 
