@@ -2,5 +2,3 @@ title: "F´"
 description: "Flight Software & Embedded Systems Framework"
 remote_theme: "fprime-community/fprime-theme@main"
 includes_dir: _includes
-plugins:
-  - jekyll-gfm-admonitions
