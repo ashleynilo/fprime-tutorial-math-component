@@ -1,4 +1,4 @@
-# F Prime Hello World Tutorial
+# F Prime MathComponent Tutorial
 
 This repository contains the source code and documentation for the F Prime MathComponent tutorial.
 
